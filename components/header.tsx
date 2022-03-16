@@ -51,11 +51,13 @@ export default function Header() {
                 <strong>{session.user.email ?? session.user.name}</strong>
               </span>
               <a
-                href={`/api/auth/signout`}
+                href={`/api/auth/cognito-signout`}
                 className={styles.button}
                 onClick={(e) => {
                   e.preventDefault()
-                  signOut()
+                  signOut({
+                    callbackUrl: "/api/auth/cognito-signout",
+                  })
                 }}
               >
                 Sign out
